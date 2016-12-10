@@ -2,23 +2,20 @@ Source: ruby-defaults
 Section: ruby
 Priority: optional
 Maintainer: Antonio Terceiro <terceiro@debian.org>
-Uploaders:
- akira yamada <akira@debian.org>,
- Daigo Moriwaki <daigo@debian.org>,
- Lucas Nussbaum <lucas@lucas-nussbaum.net>,
- Christian Hofstaedtler <zeha@debian.org>,
+Uploaders: Christian Hofstaedtler <zeha@debian.org>
 Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.5
+Standards-Version: 3.9.8
 Homepage: http://www.ruby-lang.org/
-Vcs-Git: git://anonscm.debian.org/collab-maint/ruby-defaults.git
-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/ruby-defaults.git
-XS-Testsuite: autopkgtest
+Vcs-Git: https://anonscm.debian.org/git/collab-maint/ruby-defaults.git
+Vcs-Browser: https://anonscm.debian.org/git/collab-maint/ruby-defaults.git
+Testsuite: autopkgtest
 
 Package: ruby
-Architecture: all
-Depends: ruby2.1, ${misc:Depends}
+Architecture: any
+Multi-Arch: allowed
+Depends: ruby2.3, ${misc:Depends}
 Suggests: ri, ruby-dev
-Conflicts: ruby-activesupport-3.2, ruby-activesupport-2.3 (<< 2:4)
+Conflicts: ruby-activesupport-3.2, ruby-activesupport-2.3
 Breaks:
  apt-listbugs (<< 0.1.6),
  ruby-switch (<= 0.1.0),
@@ -33,12 +30,13 @@ Description: Interpreter of object-oriented scripting language Ruby (default ver
  straight-forward, and extensible.
  .
  This package is a dependency package, which depends on Debian's default Ruby
- version (currently v2.1).
+ version (currently v2.3).
 
 Package: ruby-dev
 Section: devel
-Architecture: all
-Depends: ruby2.1-dev, ${misc:Depends}
+Architecture: any
+Multi-Arch: same
+Depends: ruby2.3-dev, ${misc:Depends}
 Description: Header files for compiling extension modules for Ruby (default version)
  Ruby is the interpreted scripting language for quick and easy
  object-oriented programming.  It has many features to process text
@@ -50,12 +48,13 @@ Description: Header files for compiling extension modules for Ruby (default vers
  many gems.
  .
  This package is a dependency package, which depends on Debian's default Ruby
- version (currently v2.1).
+ version (currently v2.3).
 
 Package: ruby-all-dev
 Section: devel
-Architecture: all
-Depends: ruby2.1, ruby2.1-dev, ${misc:Depends}
+Architecture: any
+Multi-Arch: same
+Depends: ${ruby-all-dev:Depends}, ${misc:Depends}
 Description: Ruby development environment (all versions supported in Debian)
  Ruby is the interpreted scripting language for quick and easy
  object-oriented programming.  It has many features to process text
@@ -67,7 +66,7 @@ Description: Ruby development environment (all versions supported in Debian)
  (the default one), but during transitions multiple versions might be
  supported.
  .
- To programatically list all the supported versions, install the `gem2deb`
+ To programmatically list all the supported versions, install the `gem2deb`
  package and run `dh_ruby --print-supported`. To determine which is the default
  version, just dereference the /usr/bin/ruby symbolic link.
  .
@@ -77,7 +76,7 @@ Description: Ruby development environment (all versions supported in Debian)
 Package: libruby
 Section: libs
 Architecture: all
-Depends: libruby2.1, ${misc:Depends}
+Depends: libruby2.3, ${misc:Depends}
 Description: Libraries necessary to run Ruby
  Ruby is the interpreted scripting language for quick and easy
  object-oriented programming.  It has many features to process text
@@ -87,21 +86,22 @@ Description: Libraries necessary to run Ruby
  This package includes the 'libruby' library, necessary to run Ruby.
  .
  This package is a dependency package, which depends on Debian's default Ruby
- version (currently v2.1).
+ version (currently v2.3).
 
-Package: libtcltk-ruby
+Package: ruby-tcltk
+Provides: libtcltk-ruby
 Architecture: all
-Depends: ruby2.1-tcltk, ${misc:Depends}
+Depends: ruby2.3-tcltk, ${misc:Depends}
 Description: Tcl/Tk interface for Ruby
  tcltklib is an extension library for Ruby.  It makes Ruby
  programs to be able to use low level interface for the Tcl/Tk.
  .
  This package is a dependency package, which depends on Debian's default Ruby
- version (currently v2.1).
+ version (currently v2.3).
 
 Package: ri
 Architecture: all
-Depends: ruby2.1, ruby2.1-doc, ${misc:Depends}
+Depends: ruby2.3, ruby2.3-doc, ${misc:Depends}
 Description: Ruby Interactive reference
  ri is a command line tool that displays descriptions of built-in Ruby
  methods, classes, and modules. For methods, it shows you the calling
@@ -114,11 +114,11 @@ Description: Ruby Interactive reference
  The ri executable itself is in the ruby package.
  .
  This package is a dependency package, which depends on Debian's default Ruby
- version (currently v2.1).
+ version (currently v2.3).
 
 Package: ruby-full
 Architecture: all
-Depends: ruby, ruby-dev, libtcltk-ruby, ri, ${misc:Depends}
+Depends: ruby, ruby-dev, ruby-tcltk, ri, ${misc:Depends}
 Description: Ruby full installation (default version)
  For many good reasons, the Ruby programming language is split in many
  small different packages. Installing this package will make sure you have
@@ -126,5 +126,5 @@ Description: Ruby full installation (default version)
  of the Tcl/Tk bindings for Ruby, which are only recommended.
  .
  This package is a dependency package, which depends on Debian's default Ruby
- version (currently v2.1).
+ version (currently v2.3).
 

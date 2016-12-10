@@ -1,17 +1,133 @@
-ruby-defaults (1:2.1.5+deb8u2) jessie; urgency=medium
+ruby-defaults (1:2.3.3) unstable; urgency=medium
 
-  * ruby: make the conflict on ruby-activesupport-2.3 versioned on (<< 2:4) to
-    allow transitional package to be installed (Closes: #798712)
+  * Rename libtcltk-ruby to ruby-tcltk to be consistent with other ruby
+    packages. Keep Provides: libtcltk-ruby for now.
+  * debian/copyright: list copyright for all maintainers in the latest years.
 
- -- Antonio Terceiro <terceiro@debian.org>  Thu, 28 Jan 2016 11:28:36 -0200
+ -- Antonio Terceiro <terceiro@debian.org>  Sat, 10 Dec 2016 14:05:00 -0200
 
-ruby-defaults (1:2.1.5+deb8u1) jessie; urgency=medium
+ruby-defaults (1:2.3.0+4) unstable; urgency=medium
 
-  * ruby: add `Conflicts: ruby-activesupport-2.3` to help with several
-    Rails-related upgrade issues, e.g. when upgrading redmine from wheezy
-    (Closes: #784336).
+  * Install ruby.pc symlink only in ruby-dev. (Closes: #820962)
 
- -- Antonio Terceiro <terceiro@debian.org>  Sun, 10 May 2015 18:54:20 -0300
+ -- Christian Hofstaedtler <zeha@debian.org>  Thu, 14 Apr 2016 07:11:22 +0000
+
+ruby-defaults (1:2.3.0+3) unstable; urgency=medium
+
+  * Turn `ruby` package into an `Architecture: any` package, too,
+    to ease Multi-Arch interpreter issues. Also add missing Multi-Arch
+    annotation to ruby-all-dev. Thanks to Helmut Grohne <helmutg@debian.org>.
+
+ -- Christian Hofstaedtler <zeha@debian.org>  Wed, 13 Apr 2016 18:58:32 +0000
+
+ruby-defaults (1:2.3.0+2) unstable; urgency=medium
+
+  * Add workaround for Multi-Arch interpreter problem.
+    Change ruby-all-dev to be an arch native package, so it can be
+    used in Build-Depends without losing Architecture information,
+    and have it depend on rubyN.M:any so the default ruby can still
+    be used to run ruby.
+    Thanks to Helmut Grohne <helmutg@debian.org>.
+
+ -- Christian Hofstaedtler <zeha@debian.org>  Wed, 13 Apr 2016 14:07:21 +0000
+
+ruby-defaults (1:2.3.0+1) unstable; urgency=medium
+
+  * Transition unstable to ruby2.3
+    - ruby2.3 is now the default ruby. This is the version that will ship with
+      stretch.
+    - Drop support for building against ruby2.2
+
+ -- Antonio Terceiro <terceiro@debian.org>  Wed, 02 Mar 2016 13:58:34 -0300
+
+ruby-defaults (1:2.3.0) experimental; urgency=medium
+
+  * ruby-dev: provide a symlink from ruby-X.Y.pc to ruby.pc so that pkg-config
+    can refer to the unversioned `ruby` package.
+    - becomes `Architecture: any`, because the target ruby-X.Y.pc is
+      in an architecture-dependent location.
+    - becomes `Multi-Arch: same` so ruby-dev can eventually be used to
+      cross-compile for the current default Ruby version.
+
+ -- Antonio Terceiro <terceiro@debian.org>  Tue, 01 Mar 2016 09:30:17 -0300
+
+ruby-defaults (1:2.3) experimental; urgency=medium
+
+  * Make Ruby 2.3 the default
+  * Drop support for Ruby 2.2
+
+ -- Antonio Terceiro <terceiro@debian.org>  Mon, 29 Feb 2016 11:09:57 -0300
+
+ruby-defaults (1:2.3~1) unstable; urgency=medium
+
+  * Upload to unstable, enabling builds against ruby2.3
+  * debian/control: Bump Standards-Version to 3.9.7; no changes needed.
+
+ -- Antonio Terceiro <terceiro@debian.org>  Thu, 25 Feb 2016 20:26:49 -0300
+
+ruby-defaults (1:2.3~0) experimental; urgency=medium
+
+  * Add support for building against Ruby 2.3
+  * debian/newruby: read current Ruby version from `Depends:` field of package
+    `ruby`.
+  * Add debian/tests/ruby-all-dev as a sanity test to make sure the
+    dependencies on multiple interpreters are satisfied.
+  * debian/control: switch Vcs-* to use https://
+
+ -- Antonio Terceiro <terceiro@debian.org>  Sat, 30 Jan 2016 15:49:49 -0200
+
+ruby-defaults (1:2.2.4) unstable; urgency=medium
+
+  * Drop `testrb` program symlink; it's not provided anymore as of Ruby 2.2.
+    (Closes:  #806731, #808023)
+
+ -- Antonio Terceiro <terceiro@debian.org>  Tue, 15 Dec 2015 10:02:16 -0200
+
+ruby-defaults (1:2.2.3) unstable; urgency=medium
+
+  * Upload to unstable
+    - Make Ruby 2.2 the default Ruby interpreter
+    - Drop support for Ruby 2.1
+
+ -- Antonio Terceiro <terceiro@debian.org>  Tue, 10 Nov 2015 19:18:34 -0200
+
+ruby-defaults (1:2.2) experimental; urgency=medium
+
+  * Make Ruby 2.2 the default
+  * Drop support for Ruby 2.1
+
+ -- Antonio Terceiro <terceiro@debian.org>  Wed, 08 Jul 2015 14:17:21 -0300
+
+ruby-defaults (1:2.1.5.1) unstable; urgency=medium
+
+  * Upload to unstable adding support for building against Ruby 2.2 (as well
+    as Ruby 2.1)
+
+ -- Antonio Terceiro <terceiro@debian.org>  Sun, 14 Jun 2015 17:27:17 -0300
+
+ruby-defaults (1:2.1.5.0) experimental; urgency=medium
+
+  [ Lucas Nussbaum ]
+  * Drop myself from Uploaders.
+
+  [ Antonio Terceiro ]
+  * ruby Conflicts: ruby-activesupport-2.3 to help with several Rails-related
+    upgrade issues, when using Rails 2.3 (with e.g. redmine from wheezy). See
+    #779882
+  * Cleanup Uploaders: remove akira yamada <akira@debian.org> and Daigo
+    Moriwaki <daigo@debian.org>. We are grateful to their previous
+    maintainance of ruby in Debian, but in practive they haven't done anything
+    in quite a few years.
+
+ -- Antonio Terceiro <terceiro@debian.org>  Sun, 10 May 2015 19:39:16 -0300
+
+ruby-defaults (1:2.1.5+1) experimental; urgency=medium
+
+  * Add support for Ruby 2.2 (not the default yet)
+  * debian/ruby-all-dev-depends: automatically generate dependencies for
+    ruby-all-dev based on the contents of ruby_debian_dev.rb
+
+ -- Antonio Terceiro <terceiro@debian.org>  Wed, 08 Apr 2015 10:28:22 +0200
 
 ruby-defaults (1:2.1.5) unstable; urgency=medium
 

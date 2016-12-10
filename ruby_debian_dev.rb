@@ -1,14 +1,20 @@
 module RubyDebianDev
 
-  RUBY_INTERPRETERS = {
-    'ruby2.1' => {
-      version:             '2.1',
-      binary:              '/usr/bin/ruby2.1',
-      api_version:         '2.1.0',
-      shared_library:      'libruby2.1',
-      min_ruby_dependency: 'ruby (>= 1:2.1)',
-    },
-  }
+  RUBY_INTERPRETERS = {}
+
+  def self.has_support_for(ruby)
+    RUBY_INTERPRETERS[ruby] = yield
+  end
+
+  has_support_for 'ruby2.3' do
+    {
+      version:             '2.3',
+      binary:              '/usr/bin/ruby2.3',
+      api_version:         '2.3.0',
+      shared_library:      'libruby2.3',
+      min_ruby_dependency: 'ruby (>= 1:2.3~0)',
+    }
+  end
 
   def self.min_ruby_dependency_for(shared_library)
     RUBY_INTERPRETERS.each do |int,data|
