@@ -9,7 +9,7 @@ Standards-Version: 3.9.1
 Homepage: http://www.ruby-lang.org/
 Vcs-Git: git://git.debian.org/collab-maint/ruby-defaults.git
 Vcs-Browser: http://git.debian.org/?p=collab-maint/ruby-defaults.git;a=summary
-XS-Pexip-Upstream: http://archive.ubuntu.com/ubuntu/ precise
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ jessie
 
 Package: ruby
 Architecture: all
@@ -57,7 +57,7 @@ Depends: ri1.8 (>> 1.8.7.334-1), ${misc:Depends}
 Description: Transitional package for ri1.8
  This is a transitional package which ensures that users of ri will use
  ri1.8 in the future. It can safely be removed.
- 
+
 Package: ruby-full
 Architecture: all
 Depends: ruby1.8-full (>> 1.8.7.334-1), ${misc:Depends}
