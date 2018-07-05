@@ -14,7 +14,7 @@ Homepage: http://www.ruby-lang.org/
 Vcs-Git: git://anonscm.debian.org/collab-maint/ruby-defaults.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/ruby-defaults.git
 XS-Testsuite: autopkgtest
-XS-Pexip-Upstream: http://ftp.debian.org/debian/ jessie
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ stretch
 
 Package: ruby
 Architecture: all
