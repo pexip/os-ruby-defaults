@@ -1,3 +1,9 @@
+ruby-defaults (1:2.3.3pexip1) pexip; urgency=medium
+
+  * Migrate to Stretch
+
+ -- John-Mark Bell <jmb@pexip.com>  Tue, 10 Jul 2018 12:21:06 +0000
+
 ruby-defaults (1:2.3.3) unstable; urgency=medium
 
   * Rename libtcltk-ruby to ruby-tcltk to be consistent with other ruby
