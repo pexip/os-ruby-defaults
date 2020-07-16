@@ -1,3 +1,9 @@
+ruby-defaults (1:2.5.1pexip2) pexip; urgency=medium
+
+  * Rebuild in buster environment
+
+ -- Steve McIntyre <steve.mcintyre@pexip.com>  Thu, 16 Jul 2020 06:38:33 +0000
+
 ruby-defaults (1:2.5.1pexip1) pexip; urgency=medium
 
   * Migrate to Buster
